@@ -16,9 +16,14 @@
 
 <body>
     <div id="app">
+
         @include('layouts.partials.navigation') <!-- always -->
-        @include('flash::message')
-        @yield('content') <!-- depends on which route was called -->
+         <div class="container">
+             @include('flash::message')
+
+             @yield('content') <!-- depends on which route was called -->
+         </div>
+
     </div>
 
 

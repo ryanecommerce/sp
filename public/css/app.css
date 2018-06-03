@@ -7,6 +7,10 @@ body {
   text-align: center;
 }
 
+.navbar-dark .navbar-brand {
+  color: #111 !important;
+}
+
 /*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors

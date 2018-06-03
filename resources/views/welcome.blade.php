@@ -5,10 +5,9 @@
 
 		<div class="starter-template">
 
-			<h1>WELCOME</h1>
+			<h1>작업중</h1>
 
 			<p class="lead">
-				Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.
 			</p>
 
 		</div>
