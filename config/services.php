@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id'     => '839141079630060',
+        'client_secret' => 'a304c504a59a10fc060f63ea212b8d18',
+        'redirect'      => 'http://shoppd.localhost:8080/auth/facebook/callback',
+    ],
+
 ];

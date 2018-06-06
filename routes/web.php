@@ -64,3 +64,6 @@ Route::post('auth/reset', [
     'as' => 'reset.store',
     'uses' => 'PasswordsController@postReset',
 ]);
+
+Route::get('auth/{provider}', 'SessionsController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'SessionsController@handleProviderCallback');
