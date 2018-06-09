@@ -38,13 +38,19 @@
 
         <div class="form-group">
             <button class="btn btn-primary btn-lg btn-block" type="submit">
-                {{ trans('auth.sessions.title') }}
+                {{ trans('auth.sessions.login_with_email') }}
             </button>
         </div>
 
         <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
-                <a href="{{ url('/auth/facebook') }}" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+                <a href="{{ url('/auth/facebook') }}" class="btn btn-facebook"><i class="fa fa-facebook"></i>{{ trans('auth.sessions.login_with_facebook') }}</a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                <a href="{{ url('/auth/naver') }}" class="btn"><i class="fa fa-facebook"></i>{{ trans('auth.sessions.login_with_naver') }}</a>
             </div>
         </div>
 
