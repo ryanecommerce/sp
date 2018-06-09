@@ -41,4 +41,10 @@ return [
         'redirect'      => env('FACEBOOK_CALLBACK'),
     ],
 
+    'naver' => [
+        'client_id' => env('NAVER_KEY'),
+        'client_secret' => env('NAVER_SECRET'),
+        'redirect' => env('NAVER_CALLBACK')
+    ],
+
 ];
