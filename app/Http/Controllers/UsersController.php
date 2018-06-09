@@ -31,6 +31,8 @@ class UsersController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
+            'provider' => 'native',
+            'provider_id' => '0',
             'confirm_code' => $confirmCode,
         ]);
 
@@ -41,7 +43,7 @@ class UsersController extends Controller
             );
     }); Change to Event*/
 
-        event(new \App\Events\UserCreated($user));
+        event(new \App\Events\UserCreated($user), $token);
 
         //flash('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다.가입 확인하시고 로그인 해주세요.');
         //return redirect('/');
@@ -73,6 +75,6 @@ class UsersController extends Controller
         auth()->login($user);
         flash(auth()->user()->name . '님, 환영합니다. 가입 확인 되었습니다.');
 
-        return redirect('home');
+        return redirect('/');
     }
 }

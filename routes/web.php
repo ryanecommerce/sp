@@ -65,5 +65,6 @@ Route::post('auth/reset', [
     'uses' => 'PasswordsController@postReset',
 ]);
 
-Route::get('auth/{provider}', 'SessionsController@redirectToProvider');
-Route::get('auth/{provider}/callback', 'SessionsController@handleProviderCallback');
+/* Social Authentication */
+Route::get('auth/{provider}', 'SocialController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'SocialController@handleProviderCallback');
