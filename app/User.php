@@ -30,4 +30,9 @@ class User extends Authenticatable
     protected $casts = [
         'activated' => 'boolean',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

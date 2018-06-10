@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'as' => '/',
+    'uses' => 'PostsController@index'
+]);
 
 //Auth::routes();
 
@@ -68,3 +69,6 @@ Route::post('auth/reset', [
 /* Social Authentication */
 Route::get('auth/{provider}', 'SocialController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialController@handleProviderCallback');
+
+/* Posts */
+Route::resource('posts', 'PostsController');

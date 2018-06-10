@@ -39,7 +39,7 @@ class PasswordsController extends Controller
         //flash('비밀번호를 바꾸는 방법을 담은 이메일을 발송했습니다. 메일박스를 확인해 주세요.');
         //return redirect('/');
 
-        return $this->respondError('비밀번호를 바꾸는 방법을 담은 이메일을 발송했습니다. 메일박스를 확인해 주세요.')
+        return $this->respondError('비밀번호를 바꾸는 방법을 담은 이메일을 발송했습니다. 메일박스를 확인해 주세요.');
     }
 
     public function getReset($token = null)

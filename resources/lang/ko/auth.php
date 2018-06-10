@@ -27,7 +27,7 @@ return [
         'destroy' => '로그아웃',
         'login_with_email' => '이메일로 로그인',
         'login_with_facebook' => '페이스북 ID로 로그인 | 가입',
-        'login_with_naver' => '네이 버ID로 로그인 | 가입',
+        'login_with_naver' => '네이버 ID로 로그인 | 가입',
         'description' => '깃허브 계정으로 로그인하세요. '.config('app.name'). '계정으로 로그인할 수도 있습니다.',
         'login_with_github' => '깃허브 계정으로 로그인하기',
         'remember' => '로그인 상태 유지',
