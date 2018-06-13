@@ -11,6 +11,11 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     public function index()
     {
         $posts = \App\Post::latest()->paginate(10);
@@ -47,7 +52,7 @@ class PostsController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $post = auth()->user()->posts()->create($request->all());
+        $post = $request->user()->posts()->create($request->all());
 
         if (! $post) {
             return back()->with('flash message', '글이 저장되지 않았습니다.')->withInput();
@@ -76,6 +81,8 @@ class PostsController extends Controller
      */
     public function edit(\App\Post $post)
     {
+        $this->authorize('update', $post);
+
         return view('posts.edit', compact('post'));
     }
 
@@ -102,6 +109,9 @@ class PostsController extends Controller
      */
     public function destroy(\App\Post $post)
     {
+
+        $this->authorize('delete', $post);
+
         $post->delete();
 
         return response()->json([], 204);

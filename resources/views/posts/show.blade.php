@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h4>포럼<small> / {{ $post->title }}</small></h4>
+        <h4>{{ $post->title }}</h4>
     </div>
 
     <article>
@@ -12,37 +12,46 @@
     </article>
 
     <div class="text-center action__article">
+        @can('update', $post)
         <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info">
-            <i class="fa fa-pencil"></i>글 수정
+            <i class="fa fa-pencil"></i>{{ trans('forum.posts.edit') }}
         </a>
-        <button class="btn btn-danger button__delete">
-            <i class="fa fa-trash-o"></i>글 삭제
-        </button>
+        @endcan
+
+        @can('delete', $post)
+        <a href="#" class="btn btn-danger button__delete">
+            <i class="fa fa-trash-o"></i> {{ trans('forum.posts.destroy') }}
+        </a>
+        @endcan
+
         <a href="{{ route('/') }}" class="btn btn-dark">
-            <i class="fa fa-list"></i>목록
+            <i class="fa fa-list"></i>{{ trans('forum.posts.index') }}
         </a>
     </div>
 @stop
 
 @section('script')
-    <script>
+<script>
+    $(document).ready(function(){
         $.ajaxSetup({
-            header: {
+            headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
-        $('.button__delete').on('click', function(e) {
-            var postId = $('post').data('id');
+        $('.button__delete').on('click', function (e) {
+            var postId = '{{ $post->id }}';
 
-            if (confirm('글을 삭제합니다.')) {
+            if (confirm('{{ trans('forum.posts.deleting') }}')) {
                 $.ajax({
-                    type:'DELETE',
+                    type: 'DELETE',
                     url: '/posts/' + postId
-                }).then(function() {
-                    window.location.href = '/posts';
+                }).then(function () {
+                    window.location.href = '/';
                 });
             }
         });
-    </script>
-@stop;
+
+    });
+</script>
+@stop

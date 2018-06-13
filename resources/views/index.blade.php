@@ -3,12 +3,12 @@
 @section('content')
 
 	<div class="page-header">
-		<h4>포럼<small> 글 목록</small></h4>
+		<h4> {{ trans('forum.posts.index') }}</h4>
 	</div>
 
 	<div class="text-right">
 		<a href="{{ route('posts.create') }}" class="btn btn-primary">
-			<i class="fa fa-plus-circle"></i> 새 글 쓰기
+			<i class="fa fa-plus-circle"></i> {{ trans('forum.posts.create') }}
 		</a>
 	</div>
 
@@ -16,7 +16,7 @@
 		@forelse($posts as $post)
 			@include('posts.partial.post', compact('post'))
 		@empty
-			<p class="text-center text-danger">글이 없습니다.</p>
+			<p class="text-center text-danger"> {{ trans('forum.posts.empty') }}</p>
 		@endforelse
 	</article>
 

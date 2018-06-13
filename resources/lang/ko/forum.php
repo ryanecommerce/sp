@@ -6,7 +6,7 @@ return [
 
     'search' => '포럼 검색',
 
-    'articles' => [
+    'posts' => [
         'index' => '글 목록',
         'create' => '글 쓰기',
         'edit' => '글 수정',
