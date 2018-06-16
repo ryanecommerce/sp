@@ -72,3 +72,8 @@ Route::get('auth/{provider}/callback', 'SocialController@handleProviderCallback'
 
 /* Posts */
 Route::resource('posts', 'PostsController');
+
+Route::get('tags/{slug}/posts', [
+   'as' => 'tags.posts.index',
+   'uses' => 'PostsController@index'
+]);

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    @php $viewName = 'index'; @endphp
+
     <div class="page-header">
         <h4>{{ $post->title }}</h4>
     </div>

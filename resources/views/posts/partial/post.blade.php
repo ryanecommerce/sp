@@ -6,5 +6,9 @@
         <i class="fa fa-user"></i> {{ $post->user->name }}
         <i class="fa fa-clock-o"></i> {{ $post->created_at->diffForHumans() }}
     </p>
+
+    @if ($viewName === 'index')
+        @include('tags.partial.list', ['tags' => $post->tags])
+    @endif
     </div>
 </div>

@@ -15,6 +15,14 @@ class AppServiceProvider extends ServiceProvider
     {
         app()->setLocale('en');
         \Carbon\Carbon::setLocale(app()->getLocale());
+
+        view()->composer('*', function ($view) {
+            $allTags = \Cache::rememberForever('tags.list', function () {
+                return \App\Tag::all();
+            });
+
+            $view->with(compact('allTags'));
+        });
     }
 
     /**

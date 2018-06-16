@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@php $viewName = 'index'; @endphp
 
 	<div class="page-header">
 		<h4> {{ trans('forum.posts.index') }}</h4>
@@ -12,13 +13,25 @@
 		</a>
 	</div>
 
-	<article>
-		@forelse($posts as $post)
-			@include('posts.partial.post', compact('post'))
-		@empty
-			<p class="text-center text-danger"> {{ trans('forum.posts.empty') }}</p>
-		@endforelse
-	</article>
+
+	<div class="row">
+		<div class="col-md-3">
+			<aside>
+				@include('tags.partial.index')
+			</aside>
+		</div>
+		<div class="col-md-9">
+			<article>
+				@forelse($posts as $post)
+					@include('posts.partial.post', compact('post'))
+				@empty
+					<p class="text-center text-danger"> {{ trans('forum.posts.empty') }}</p>
+				@endforelse
+			</article>
+		</div>
+	</div>
+
+
 
 
 	@if($posts->count())

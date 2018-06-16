@@ -16,9 +16,15 @@ class PostsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-    public function index()
+    public function index($slug = null)
     {
-        $posts = \App\Post::latest()->paginate(10);
+        $query = $slug
+            ? \App\Tag::whereSlug($slug)->firstOrFail()->posts()
+            : new \App\Post;
+
+        $posts = $query->latest()->paginate(10);
+
+        //$posts = \App\Post::latest()->paginate(10);
 
         return view('index', compact('posts'));
     }
@@ -58,6 +64,8 @@ class PostsController extends Controller
             return back()->with('flash message', '글이 저장되지 않았습니다.')->withInput();
         }
 
+        $post->tags()->sync($request->input('tags'));
+
         return redirect(route('/'))->with('flash_message', '작성하신 글이 저장되었습니다.');
 
     }
@@ -96,6 +104,8 @@ class PostsController extends Controller
     public function update(Request $request, \App\Post $post)
     {
         $post->update($request->all());
+        $post->tags()->sync($request->input('tags'));
+
         flash()->success('수정하신 내용을 저장했습니다.');
 
         return redirect(route('posts.show', $post->id));

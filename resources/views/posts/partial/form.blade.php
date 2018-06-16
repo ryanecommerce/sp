@@ -9,3 +9,16 @@
     <textarea name="content" id="content" rows="10" class="form-control">{{ old('content', $post->content) }}</textarea>
     {!!  $errors->first('content', '<span class="form-error">:message</span>') !!}
 </div>
+
+<div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
+
+    <label for="tags">태그</label>
+    <select name="tags[]" id="tags" class="form-control">
+        @foreach($allTags as $tag)
+            <option value="{{ $tag->id }}" {{ $post->tags->contains($tag->id) }} ? 'selected="selected"' : '' }}>
+            {{ $tag->name }}
+            </option>
+        @endforeach
+    </select>
+    {!! $errors->first('tags', '<span class="form-error">:message</span>') !!}
+</div>
