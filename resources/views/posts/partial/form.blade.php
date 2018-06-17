@@ -13,12 +13,30 @@
 <div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
 
     <label for="tags">태그</label>
-    <select name="tags[]" id="tags" class="form-control">
+    <select name="tags[]" id="tags" multiple="multiple" class="form-control" >
         @foreach($allTags as $tag)
-            <option value="{{ $tag->id }}" {{ $post->tags->contains($tag->id) }} ? 'selected="selected"' : '' }}>
-            {{ $tag->name }}
+            <option value="{{ $tag->id }}" {{ $post->tags->contains($tag->id) ? 'selected="selected"' : '' }}>
+                {{ $tag->name }}
             </option>
         @endforeach
     </select>
     {!! $errors->first('tags', '<span class="form-error">:message</span>') !!}
 </div>
+
+
+
+@section('script')
+    @parent
+    <script src="/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#tags").select2({
+                placeholder: '태그를 선택하세요 (최대 3개)',
+                maximumSelectionLength: 3,
+                tags: true
+            });
+
+        });
+    </script>
+@stop
+
