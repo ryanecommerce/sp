@@ -7,8 +7,12 @@
         <i class="fa fa-clock-o"></i> {{ $post->created_at->diffForHumans() }}
     </p>
 
-    @if ($viewName === 'index')
+    @if ($viewName === 'posts.show' || $viewName === 'index' )
         @include('tags.partial.list', ['tags' => $post->tags])
+    @endif
+
+    @if ($viewName === 'posts.show')dd
+        @include('attachments.partial.list', ['attachments' => $post->attachments])
     @endif
     </div>
 </div>

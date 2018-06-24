@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @php $viewName = 'index'; @endphp
+    @php $viewName = 'posts.show'; @endphp
 
     <div class="page-header">
         <h4>{{ $post->title }}</h4>

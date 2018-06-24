@@ -37,6 +37,6 @@ class DatabaseSeeder extends Seeder
                 )
             );
         }
-        $this->command->info('Seeded: article_tag table');
+        $this->command->info('Seeded: post_tag table');
     }
 }

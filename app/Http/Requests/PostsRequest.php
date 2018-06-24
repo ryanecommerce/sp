@@ -11,9 +11,11 @@ class PostsRequest extends FormRequest
      *
      * @return bool
      */
+    protected $dontFlash = ['files'];
+
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +27,10 @@ class PostsRequest extends FormRequest
     {
         return [
             'tags' => ['required', 'array'],
+            'files' => ['array'],
+            'files.*' => ['mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg', 'max:3000000000000'],
         ];
     }
+
+
 }

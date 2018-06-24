@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use App\Attachment;
+
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -11,6 +14,7 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
@@ -36,7 +40,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $post = new Post;
+
+        return view('posts.create', compact('post'));
     }
 
     /**
@@ -45,8 +51,30 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(\App\Http\Requests\PostsRequest $request, \App\Post $post)
     {
+        if ($request->hasfile('files')) {
+            $files = $request->file('files');
+
+
+            foreach($files as $file) {
+
+                $fileGetSize = $file->getSize();
+
+
+                $filename = str_random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+                $file->move(attachments_path(), $filename);
+
+
+
+                $post->attachments()->create([
+                    'filename' => $filename,
+                    'bytes' => $fileGetSize,
+                    'mime' => $file->getClientMimeType()
+                ]);
+            }
+        }
+
         $rules = [
             'title' => ['required'],
             'content' => ['required', 'min:10'],
@@ -126,4 +154,5 @@ class PostsController extends Controller
 
         return response()->json([], 204);
     }
+
 }
