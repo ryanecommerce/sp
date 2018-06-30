@@ -17,7 +17,6 @@
     {!! $errors->first('files.0', '<span class="form-error">:message</span>') !!}
 </div>
 
-
 <div class="form-group {{ $errors->has('tags') ? 'has-error' : '' }}">
 
     <label for="tags">태그</label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Attachment;
+use App\Tag;
 
 use Illuminate\Http\Request;
 
@@ -53,27 +54,6 @@ class PostsController extends Controller
      */
     public function store(\App\Http\Requests\PostsRequest $request, \App\Post $post)
     {
-        if ($request->hasfile('files')) {
-            $files = $request->file('files');
-
-
-            foreach($files as $file) {
-
-                $fileGetSize = $file->getSize();
-
-
-                $filename = str_random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
-                $file->move(attachments_path(), $filename);
-
-
-
-                $post->attachments()->create([
-                    'filename' => $filename,
-                    'bytes' => $fileGetSize,
-                    'mime' => $file->getClientMimeType()
-                ]);
-            }
-        }
 
         $rules = [
             'title' => ['required'],
@@ -88,11 +68,33 @@ class PostsController extends Controller
 
         $post = $request->user()->posts()->create($request->all());
 
+        if ($request->hasfile('files')) {
+            $files = $request->file('files');
+
+
+            foreach($files as $file) {
+
+                $fileGetSize = $file->getSize();
+
+
+                $filename = str_random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+                $file->move(attachments_path(), $filename);
+
+                $post->attachments()->create([
+                    'post_id' => $post->id,
+                    'filename' => $filename,
+                    'bytes' => $fileGetSize,
+                    'mime' => $file->getClientMimeType()
+                ]);
+            }
+        }
+
+
+        //$post->tags()->sync($request->input('tags'));
+
         if (! $post) {
             return back()->with('flash message', '글이 저장되지 않았습니다.')->withInput();
         }
-
-        $post->tags()->sync($request->input('tags'));
 
         return redirect(route('/'))->with('flash_message', '작성하신 글이 저장되었습니다.');
 

@@ -20,7 +20,6 @@ class CreateAttachmentsTable extends Migration
             $table->integer('bytes')->nullable()->unsigned();
             $table->string('mime')->nullable();
             $table->timestamps();
-
         });
     }
 

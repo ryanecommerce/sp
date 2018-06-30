@@ -11,7 +11,7 @@
         @include('tags.partial.list', ['tags' => $post->tags])
     @endif
 
-    @if ($viewName === 'posts.show')dd
+    @if ($viewName === 'posts.show')
         @include('attachments.partial.list', ['attachments' => $post->attachments])
     @endif
     </div>
