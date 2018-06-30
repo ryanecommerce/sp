@@ -9,3 +9,27 @@
 
 // Select2
 @import "~select2/src/scss/core";
+
+$bgDefault: #fff;
+$border-bottom: #dee2e6;
+
+.navbar-default {
+  background-color:$bgDefault;
+  border-bottom: 1px solid $border-bottom;
+  .nav{
+    > li {
+      > a {
+        margin-left: 5px;
+      }
+    }}}
+
+.card {
+  .card-header {
+    background-color:royalblue; height:100px;
+      > h2 a {
+        font-weight: 300;
+        text-decoration: none;
+        color: $bgDefault; }
+
+    .card-text > a {
+      color: $bgDefault; }}}

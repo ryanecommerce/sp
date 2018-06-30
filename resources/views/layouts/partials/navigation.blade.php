@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+<nav class="navbar navbar-default navbar-expand-md navbar-dark fixed-top">
 
      <a class="navbar-brand" href="{{ url('/') }}">
         {{ config('app.name') }}
@@ -25,10 +25,15 @@
                 <li class="nav-item">
                      <a class="nav-link" href="{{ route('sessions.create') }}">로그인</a>
                 </li>
-                <li class="nav-item">
-                     <a class="nav-link" href="{{ route('users.create') }}">회원 가입</a>
+                <li class="nav-item nav-pills nav-justified">
+                     <a class="nav-link active" href="{{ route('users.create') }}">회원 가입</a>
                 </li>
             @else
+                <li class="nav-item">
+                    <a href="{{ route('posts.create') }}" class="nav-link">
+                        <i class="fa fa-plus-circle"></i> {{ trans('forum.posts.create') }}
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">

@@ -2,6 +2,7 @@
 
 body {
   padding-top: 5rem;
+  font-family: "Noto Sans Korean", sans-serif!important;
 }
 
 .starter-template {
@@ -11,4 +12,8 @@ body {
 
 .navbar-dark .navbar-brand {
   color: #111 !important;
+}
+
+.navbar-brand {
+  font-weight: 300;
 }

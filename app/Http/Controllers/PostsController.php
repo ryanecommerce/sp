@@ -27,7 +27,7 @@ class PostsController extends Controller
             ? \App\Tag::whereSlug($slug)->firstOrFail()->posts()
             : new \App\Post;
 
-        $posts = $query->latest()->paginate(10);
+        $posts = $query->latest()->paginate(15);
 
         //$posts = \App\Post::latest()->paginate(10);
 

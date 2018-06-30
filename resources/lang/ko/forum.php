@@ -8,7 +8,7 @@ return [
 
     'posts' => [
         'index' => '글 목록',
-        'create' => '글 쓰기',
+        'create' => '글쓰기',
         'edit' => '글 수정',
         'destroy' => '글 삭제',
         'store' => '저장하기',
@@ -34,6 +34,8 @@ return [
         'error_writing' => '작성하신 글을 저장하지 못했습니다.',
         'success_writing' => '작성하신 글을 저장했습니다.',
         'success_updating' => '수정하신 내용을 저장했습니다.',
+        'view' => '보기',
+        'download' => '다운로드',
     ],
 
     'comments' => [

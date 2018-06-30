@@ -1,5 +1,6 @@
 body {
   padding-top: 5rem;
+  font-family: "Noto Sans Korean", sans-serif !important;
 }
 
 .starter-template {
@@ -9,6 +10,10 @@ body {
 
 .navbar-dark .navbar-brand {
   color: #111 !important;
+}
+
+.navbar-brand {
+  font-weight: 300;
 }
 
 /*!
@@ -11071,5 +11076,29 @@ a.text-dark:focus {
 
 .select2-container--classic.select2-container--open .select2-dropdown {
   border-color: #5897fb;
+}
+
+.navbar-default {
+  background-color: #fff;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.navbar-default .nav > li > a {
+  margin-left: 5px;
+}
+
+.card .card-header {
+  background-color: royalblue;
+  height: 100px;
+}
+
+.card .card-header > h2 a {
+  font-weight: 300;
+  text-decoration: none;
+  color: #fff;
+}
+
+.card .card-header .card-text > a {
+  color: #fff;
 }
 
