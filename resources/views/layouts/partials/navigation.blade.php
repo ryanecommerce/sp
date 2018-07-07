@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-expand-md navbar-dark fixed-top">
 
      <a class="navbar-brand" href="{{ url('/') }}">
-        {{ config('app.name') }}
+         {{ trans('app.name') }}
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">

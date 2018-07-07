@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 @php $viewName = 'index'; @endphp
 
 	<div class="page-header">

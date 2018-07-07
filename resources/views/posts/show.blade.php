@@ -8,7 +8,6 @@
     </div>
 
     <article>
-        @include('posts.partial.post', compact('post'))
 
         <p>{!! $post->content !!}</p>
     </article>
