@@ -20,7 +20,7 @@
     @yield('script')
 
 </head>
-<body>
+<body style="height:120%;">
     <div id="app">
 
         @include('layouts.partials.navigation') <!-- always -->

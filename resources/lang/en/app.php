@@ -2,6 +2,6 @@
 
 return [
 
-    'name' => 'Start SHOP',
+    'name' => '샵피디',
 
 ];

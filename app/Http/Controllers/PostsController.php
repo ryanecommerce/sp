@@ -21,13 +21,20 @@ class PostsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-    public function index($slug = null)
+    public function index(Request $request, $slug = null)
     {
         $query = $slug
             ? \App\Tag::whereSlug($slug)->firstOrFail()->posts()
             : new \App\Post;
 
-        $posts = $query->latest()->paginate(15);
+        $posts = $query->latest()->paginate(30);
+
+        if ($request->ajax()) {
+
+            $view = view('posts.partial.post', compact('posts'))->render();
+
+            return response()->json(['html' => $view]);
+        }
 
         //$posts = \App\Post::latest()->paginate(10);
 
