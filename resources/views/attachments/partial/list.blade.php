@@ -1,10 +1,9 @@
 @if ($attachments->count())
     <ul class="attachment__post">
-        <li><i class="fa fa-paperclip"></i></li>
         @foreach ($attachments as $attachment)
-            <li>
+            <li><i class="fa fa-paperclip"></i>
                 <a href="{{ $attachment->url }}">
-                    {{ $attachment->filename }} ({{ $attachment->bytes }})
+                    다운로드({{ $attachment->bytes }})
                 </a>
             </li>
         @endforeach

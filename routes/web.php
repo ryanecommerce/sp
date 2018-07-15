@@ -77,3 +77,6 @@ Route::get('tags/{slug}/posts', [
    'as' => 'tags.posts.index',
    'uses' => 'PostsController@index'
 ]);
+
+/* News */
+Route::resource('newshub', 'NewsController');

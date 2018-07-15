@@ -5,19 +5,20 @@
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <i class="fa fa-bars" aria-hidden="true"></i>
     </button>
 
     <div class="collapse navbar-collapse" id="mainNavbar">
 
         <ul class="navbar-nav mr-auto">
-            <!-- <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item active">
+                <a class="nav-link" href="/newshub">뉴스허브</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li> -->
+                <a class="nav-link" href="/posts">포스트</a>
+            </li>
         </ul>
+
 
         <ul class="nav justify-content-end">
             <!-- Authentication Links -->

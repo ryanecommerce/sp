@@ -25,8 +25,10 @@
 	</div>
 	</div>
 
-	<div class="ajax-load text-center" style="display:none">
-		<p><img src="http://demo.itsolutionstuff.com/plugin/loader.gif">Loading More post</p>
+
+    <div class="lds-ring" style="margin:auto; display:none;"><div></div><div></div><div></div><div></div></div>
+
+	<div class="ajax-load col-lg-12 col-centered text-center" style="display:block;">
 	</div>
 
 	<script type="text/javascript">
@@ -53,19 +55,19 @@
 					//error:function(request, status, error){alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);},
 					beforeSend: function()
 					{
-					    $('.ajax-load').show();
+					    $('.lds-ring').show();
 					}
 				})
 
 				.done(function(data)
 				{
 				    if(data.html == "") {
-				        $('.ajax-load').html("No more records found");
 
+                        $('.lds-ring').hide();
+                        $('.ajax-load').html("마지막 포스트입니다.").fadeIn('5000');
 				        return;
 					}
 
-					$('.ajax-load').hide();
 				    $('#post-data').append(data.html);
 				})
 

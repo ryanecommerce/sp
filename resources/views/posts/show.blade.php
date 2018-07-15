@@ -8,14 +8,15 @@
     </div>
 
     <article>
-
         <p>{!! $post->content !!}</p>
     </article>
+
+    @include('attachments.partial.list', ['attachments' => $post->attachments])
 
     <div class="text-center action__article">
         @can('update', $post)
         <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info">
-            <i class="fa fa-pencil"></i>{{ trans('forum.posts.edit') }}
+            <i class="fa fa-pencil"></i> {{ trans('forum.posts.edit') }}
         </a>
         @endcan
 
@@ -26,7 +27,7 @@
         @endcan
 
         <a href="{{ route('/') }}" class="btn btn-dark">
-            <i class="fa fa-list"></i>{{ trans('forum.posts.index') }}
+            <i class="fa fa-list"></i> {{ trans('forum.posts.index') }}
         </a>
     </div>
 @stop

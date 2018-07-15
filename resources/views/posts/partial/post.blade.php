@@ -10,7 +10,7 @@
                     @include('tags.partial.list', ['tags' => $post->tags])
                 @endif
 
-                <p class="card-text"><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></p>
+                <p class="card-text"><a href="{{ route('posts.show', $post->id) }}">{{ str_limit($post->title, 35) }}</a></p>
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
@@ -18,7 +18,14 @@
                         <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location='{{ route('posts.show', $post->id) }}'">
                             {{ trans('forum.posts.view') }}
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">{{ trans('forum.posts.download') }}</button>
+
+                        @php $attachments = $post->attachments; @endphp
+
+                        @foreach ($attachments as $attachment)
+                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location='{{ $attachment->url}}'">
+                            {{ trans('forum.posts.download') }}
+                        </button>
+                        @endforeach
                     </div>
                     <small class="text-muted">{{ $post->user->name }}</small>
                     <!-- <small class="text-muted">{{ $post->created_at->diffForHumans() }}</small> -->

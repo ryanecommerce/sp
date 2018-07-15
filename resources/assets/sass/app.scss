@@ -10,8 +10,15 @@
 // Select2
 @import "~select2/src/scss/core";
 
+// Font Awesome
+@import "~font-awesome/scss/font-awesome.scss";
+
 $bgDefault: #fff;
+$mainDefault: #04bfbf;
 $border-bottom: #dee2e6;
+$navLinktext: #3a3a3a;
+$navLinktext2: #fff;
+
 
 .navbar-default {
   background-color:$bgDefault;
@@ -33,3 +40,83 @@ $border-bottom: #dee2e6;
 
     .card-text > a {
       color: $bgDefault; }}}
+
+.nav-link {
+  color: $navLinktext!important;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px 10px 20px!important;
+}
+
+.nav-pills {
+  > a {
+    color: $bgDefault !important;
+  }
+  .nav-link.active {
+    background: $mainDefault;
+  }
+}
+
+
+//Loading Style
+.lds-ring {
+  position: relative;
+  margin: auto;
+  width: 64px;
+  height: 64px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #cef;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #cef transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ajax-load {
+  padding: 20px 0 40px;
+}
+
+.attachment__post {
+  list-style: none;
+}
+
+.newhub {
+  .card-text {
+    > a {
+      font-size: 13px;
+      font-weight: 600;
+      color: $navLinktext !important;
+    }
+  }
+}
+
+
+.navbar-toggler {
+  border-color: $mainDefault !important;
+  > i {
+    color: $mainDefault !important;
+  }
+}

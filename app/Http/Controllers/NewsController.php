@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
-use App\Attachment;
-use App\Tag;
-
+use App\News;
 use Illuminate\Http\Request;
 
-class PostsController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,21 +21,21 @@ class PostsController extends Controller
     public function index(Request $request, $slug = null)
     {
         $query = $slug
-            ? \App\Tag::whereSlug($slug)->firstOrFail()->posts()
-            : new \App\Post;
+            ? \App\Tag::whereSlug($slug)->firstOrFail()->news()
+            : new \App\News;
 
-        $posts = $query->latest()->paginate(30);
+        $newshub = $query->latest()->paginate(30);
 
         if ($request->ajax()) {
 
-            $view = view('posts.partial.post', compact('posts'))->render();
+            $view = view('newshub.partial.news', compact('newshub'))->render();
 
             return response()->json(['html' => $view]);
         }
 
         //$posts = \App\Post::latest()->paginate(10);
 
-        return view('posts/list', compact('posts'));
+        return view('newshub/list', compact('newshub'));
     }
 
     /**
@@ -48,9 +45,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $post = new Post;
+        $news = new News;
 
-        return view('posts.create', compact('post'));
+        return view('newshub.create', compact('news'));
     }
 
     /**
@@ -59,12 +56,11 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Http\Requests\PostsRequest $request, \App\Post $post)
+    public function store(Request $request)
     {
-
         $rules = [
             'title' => ['required'],
-            'content' => ['required', 'min:10'],
+            'link' => ['required'],
         ];
 
         $validator = \Validator::make($request->all(), $rules);
@@ -73,37 +69,15 @@ class PostsController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $post = $request->user()->posts()->create($request->all());
+        $newshub = $request->user()->newshub()->create($request->all());
 
-        if ($request->hasfile('files')) {
-            $files = $request->file('files');
+        $newshub->tags()->sync($request->input('tags'));
 
-
-            foreach($files as $file) {
-
-                $fileGetSize = $file->getSize();
-
-                $filename = str_random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
-                $file->move(attachments_path(), $filename);
-
-                $post->attachments()->create([
-                    'post_id' => $post->id,
-                    'filename' => $filename,
-                    'bytes' => $fileGetSize,
-                    'mime' => $file->getClientMimeType()
-                ]);
-            }
-        }
-
-
-        $post->tags()->sync($request->input('tags'));
-
-        if (! $post) {
+        if (! $newshub) {
             return back()->with('flash message', '글이 저장되지 않았습니다.')->withInput();
         }
 
         return redirect(route('/'))->with('flash_message', '작성하신 글이 저장되었습니다.');
-
     }
 
     /**
@@ -112,9 +86,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(\App\Post $post)
+    public function show(\App\News $newshub)
     {
-        return view('posts.show', compact('post'));
+        return view('newshub.show', compact('newshub'));
     }
 
     /**
@@ -123,11 +97,11 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(\App\Post $post)
+    public function edit(\App\News $newshub)
     {
-        $this->authorize('update', $post);
+        $this->authorize('update', $newshub);
 
-        return view('posts.edit', compact('post'));
+        return view('newshub.edit', compact('newshub'));
     }
 
     /**
@@ -137,14 +111,14 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, \App\Post $post)
+    public function update(Request $request, \App\News $newshub)
     {
-        $post->update($request->all());
-        $post->tags()->sync($request->input('tags'));
+        $newshub->update($request->all());
+        $newshub->tags()->sync($request->input('tags'));
 
         flash()->success('수정하신 내용을 저장했습니다.');
 
-        return redirect(route('posts.show', $post->id));
+        return redirect(route('newshub.show', $newshub->id));
     }
 
     /**
@@ -153,14 +127,12 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(\App\Post $post)
+    public function destroy(\App\News $newshub)
     {
+        $this->authorize('delete', $newshub);
 
-        $this->authorize('delete', $post);
-
-        $post->delete();
+        $newshub->delete();
 
         return response()->json([], 204);
     }
-
 }
