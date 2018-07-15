@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use App\News;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     /**
@@ -21,10 +23,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug = null)
     {
-        flash('환영합니다.');
+        $newshub = \App\News::All()->take(4);
 
-        return view('home');
+        $query = $slug
+            ? \App\Tag::whereSlug($slug)->firstOrFail()->posts()
+            : new \App\Post;
+
+        $posts = $query->latest()->paginate(9);
+
+        return view('index', compact('newshub', 'posts'));
     }
 }

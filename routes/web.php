@@ -13,12 +13,10 @@
 
 Route::get('/', [
     'as' => '/',
-    'uses' => 'PostsController@index'
+    'uses' => 'HomeController@index'
 ]);
 
 //Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 /* User Sign In */
 Route::get('auth/register', [

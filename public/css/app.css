@@ -14133,6 +14133,10 @@ a.text-dark:focus {
   clip: auto;
 }
 
+.navbar-dark .navbar-brand {
+  font-weight: 500 !important;
+}
+
 .navbar-default {
   background-color: #fff;
   border-bottom: 1px solid #dee2e6;
@@ -14253,5 +14257,9 @@ a.text-dark:focus {
 
 .navbar-toggler > i {
   color: #04bfbf !important;
+}
+
+.index-button {
+  margin-bottom: 20px;
 }
 

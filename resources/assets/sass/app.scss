@@ -20,6 +20,10 @@ $navLinktext: #3a3a3a;
 $navLinktext2: #fff;
 
 
+.navbar-dark .navbar-brand {
+  font-weight: 500 !important;
+}
+
 .navbar-default {
   background-color:$bgDefault;
   border-bottom: 1px solid $border-bottom;
@@ -113,10 +117,13 @@ $navLinktext2: #fff;
   }
 }
 
-
 .navbar-toggler {
   border-color: $mainDefault !important;
   > i {
     color: $mainDefault !important;
   }
+}
+
+.index-button {
+  margin-bottom: 20px;
 }
