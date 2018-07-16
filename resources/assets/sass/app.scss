@@ -127,3 +127,14 @@ $navLinktext2: #fff;
 .index-button {
   margin-bottom: 20px;
 }
+
+.btn-outline-primary {
+  border-color: $mainDefault !important;
+  color: $mainDefault !important;
+  margin: auto;
+}
+
+.btn-outline-primary:hover {
+  color: $bgDefault !important;
+  background-color: $mainDefault !important;
+}

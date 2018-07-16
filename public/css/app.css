@@ -14263,3 +14263,14 @@ a.text-dark:focus {
   margin-bottom: 20px;
 }
 
+.btn-outline-primary {
+  border-color: #04bfbf !important;
+  color: #04bfbf !important;
+  margin: auto;
+}
+
+.btn-outline-primary:hover {
+  color: #fff !important;
+  background-color: #04bfbf !important;
+}
+
