@@ -14146,19 +14146,32 @@ a.text-dark:focus {
   margin-left: 5px;
 }
 
+.card {
+  border: 2px solid #81dfdf !important;
+}
+
 .card .card-header {
-  background-color: royalblue;
+  background-color: transparent !important;
+  border-bottom: 1px solid #81dfdf !important;
   height: 100px;
 }
 
 .card .card-header > h2 a {
   font-weight: 300;
   text-decoration: none;
-  color: #fff;
+  color: #3a3a3a;
 }
 
 .card .card-header .card-text > a {
-  color: #fff;
+  color: #3a3a3a;
+}
+
+.btn-outline-secondary {
+  border-color: #81dfdf !important;
+}
+
+.btn:hover {
+  background-color: #03abab !important;
 }
 
 .nav-link {
@@ -14174,6 +14187,10 @@ a.text-dark:focus {
 
 .nav-pills .nav-link.active {
   background: #04bfbf;
+}
+
+.nav-pills .nav-link.active > :hover {
+  background: #03abab;
 }
 
 .lds-ring {
@@ -14260,17 +14277,22 @@ a.text-dark:focus {
 }
 
 .index-button {
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .btn-outline-primary {
-  border-color: #04bfbf !important;
-  color: #04bfbf !important;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff !important;
+  background-color: #04bfbf !important;
+  border: 0px;
   margin: auto;
+  padding: 10px 20px 10px 20px;
 }
 
 .btn-outline-primary:hover {
   color: #fff !important;
-  background-color: #04bfbf !important;
+  background-color: #03abab !important;
 }
 

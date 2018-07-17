@@ -15,10 +15,11 @@
 
 $bgDefault: #fff;
 $mainDefault: #04bfbf;
+$mainDefault_dark1: #03abab;
+$mainDefault_light1: #81dfdf;
 $border-bottom: #dee2e6;
 $navLinktext: #3a3a3a;
 $navLinktext2: #fff;
-
 
 .navbar-dark .navbar-brand {
   font-weight: 500 !important;
@@ -35,15 +36,24 @@ $navLinktext2: #fff;
     }}}
 
 .card {
+  border: 2px solid $mainDefault_light1 !important;
   .card-header {
-    background-color:royalblue; height:100px;
+    background-color: transparent!important;
+    border-bottom: 1px solid $mainDefault_light1 !important;
+    height:100px;
       > h2 a {
         font-weight: 300;
         text-decoration: none;
-        color: $bgDefault; }
+        color: $navLinktext; }
 
     .card-text > a {
-      color: $bgDefault; }}}
+      color: $navLinktext; }}}
+
+.btn-outline-secondary {
+  border-color: $mainDefault_light1 !important;
+}
+
+.btn:hover { background-color: $mainDefault_dark1 !important; }
 
 .nav-link {
   color: $navLinktext!important;
@@ -58,6 +68,9 @@ $navLinktext2: #fff;
   }
   .nav-link.active {
     background: $mainDefault;
+    >:hover {
+      background: $mainDefault_dark1;
+    }
   }
 }
 
@@ -125,16 +138,22 @@ $navLinktext2: #fff;
 }
 
 .index-button {
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
+//button
 .btn-outline-primary {
-  border-color: $mainDefault !important;
-  color: $mainDefault !important;
+  font-size: 13px;
+  font-weight: 600;
+  color: $bgDefault !important;
+  background-color: $mainDefault !important;
+  border: 0px;
   margin: auto;
+  padding: 10px 20px 10px 20px;
 }
 
 .btn-outline-primary:hover {
   color: $bgDefault !important;
-  background-color: $mainDefault !important;
+  background-color: $mainDefault_dark1 !important;
 }
