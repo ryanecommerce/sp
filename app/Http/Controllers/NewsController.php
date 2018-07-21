@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use App\Attachments_news;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -56,7 +57,7 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(\App\Http\Requests\PostsRequest $request)
     {
         $rules = [
             'title' => ['required'],
@@ -69,7 +70,28 @@ class NewsController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $newshub = $request->user()->newshub()->create($request->all());
+        $newshub = $request->user()->news()->create($request->all());
+
+        if ($request->hasfile('files')) {
+            $files = $request->file('files');
+
+
+
+            foreach($files as $file) {
+
+                $fileGetSize = $file->getSize();
+
+                $filename = str_random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+                $file->move(attachments_news_path(), $filename);
+
+                $newshub->attachments_news()->create([
+                    'news_id' => $newshub->id,
+                    'filename' => $filename,
+                    'bytes' => $fileGetSize,
+                    'mime' => $file->getClientMimeType()
+                ]);
+            }
+        }
 
         $newshub->tags()->sync($request->input('tags'));
 
@@ -86,9 +108,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(\App\News $newshub)
+    public function show(\App\News $news)
     {
-        return view('newshub.show', compact('newshub'));
+        return view('newshub.show', compact('news'));
     }
 
     /**
@@ -97,11 +119,11 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(\App\News $newshub)
+    public function edit(\App\News $news)
     {
-        $this->authorize('update', $newshub);
+        $this->authorize('update', $news);
 
-        return view('newshub.edit', compact('newshub'));
+        return view('newshub.edit', compact('news'));
     }
 
     /**
@@ -111,14 +133,14 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, \App\News $newshub)
+    public function update(Request $request, \App\News $news)
     {
-        $newshub->update($request->all());
-        $newshub->tags()->sync($request->input('tags'));
+        $news->update($request->all());
+        $news->tags()->sync($request->input('tags'));
 
         flash()->success('수정하신 내용을 저장했습니다.');
 
-        return redirect(route('newshub.show', $newshub->id));
+        return redirect(route('newshub.show', $news->id));
     }
 
     /**
@@ -127,11 +149,11 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(\App\News $newshub)
+    public function destroy(\App\News $news)
     {
-        $this->authorize('delete', $newshub);
+        $this->authorize('delete', $news);
 
-        $newshub->delete();
+        $news->delete();
 
         return response()->json([], 204);
     }

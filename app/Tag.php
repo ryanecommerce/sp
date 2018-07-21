@@ -28,7 +28,7 @@ class Tag extends Model
         return $this->belongsToMany(Post::class);
     }
 
-    public function newshub()
+    public function news()
     {
         return $this->belongsToMany(News::class);
     }

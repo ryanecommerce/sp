@@ -36,7 +36,7 @@ $navLinktext2: #fff;
     }}}
 
 .card {
-  border: 2px solid $mainDefault_light1 !important;
+  //border: 0px solid $mainDefault_light1 !important;
   .card-header {
     background-color: transparent!important;
     border-bottom: 1px solid $mainDefault_light1 !important;
@@ -48,6 +48,23 @@ $navLinktext2: #fff;
 
     .card-text > a {
       color: $navLinktext; }}}
+
+div.card-text  {
+  width: 100%;
+  > .h_left {
+    float: left;
+    width: 80%;
+    > p {
+      margin-bottom: 0px;
+      > a {
+        color: $navLinktext;
+        text-decoration: none;
+      }
+    }}
+  > .h_right {
+    float: left;
+    width: 20%;
+    text-align: right; }}
 
 .btn-outline-secondary {
   border-color: $mainDefault_light1 !important;

@@ -14146,10 +14146,6 @@ a.text-dark:focus {
   margin-left: 5px;
 }
 
-.card {
-  border: 2px solid #81dfdf !important;
-}
-
 .card .card-header {
   background-color: transparent !important;
   border-bottom: 1px solid #81dfdf !important;
@@ -14164,6 +14160,30 @@ a.text-dark:focus {
 
 .card .card-header .card-text > a {
   color: #3a3a3a;
+}
+
+div.card-text {
+  width: 100%;
+}
+
+div.card-text > .h_left {
+  float: left;
+  width: 80%;
+}
+
+div.card-text > .h_left > p {
+  margin-bottom: 0px;
+}
+
+div.card-text > .h_left > p > a {
+  color: #3a3a3a;
+  text-decoration: none;
+}
+
+div.card-text > .h_right {
+  float: left;
+  width: 20%;
+  text-align: right;
 }
 
 .btn-outline-secondary {

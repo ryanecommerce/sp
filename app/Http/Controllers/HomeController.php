@@ -25,7 +25,10 @@ class HomeController extends Controller
      */
     public function index($slug = null)
     {
-        $newshub = \App\News::All()->take(4);
+        $news = new News();
+
+        $newshub = $news->latest()->paginate(4);
+
 
         $query = $slug
             ? \App\Tag::whereSlug($slug)->firstOrFail()->posts()

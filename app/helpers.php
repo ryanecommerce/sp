@@ -5,6 +5,11 @@ function attachments_path($path = null)
     return public_path('files'.($path ? DIRECTORY_SEPARATOR.$path : $path));
 }
 
+function attachments_news_path($path = null)
+{
+    return public_path('images'.($path ? DIRECTORY_SEPARATOR.$path : $path));
+}
+
 function format_filesize($bytes)
 {
     if (! is_numeric($bytes)) return 'NaN';

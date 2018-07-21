@@ -36,7 +36,7 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function newshub()
+    public function news()
     {
         return $this->hasMany(News::class);
     }
