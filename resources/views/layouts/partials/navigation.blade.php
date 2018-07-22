@@ -30,11 +30,27 @@
                      <a class="nav-link active" href="{{ route('users.create') }}">회원 가입</a>
                 </li>
             @else
-                <li class="nav-item">
-                    <a href="{{ route('posts.create') }}" class="nav-link">
-                        <i class="fa fa-plus-circle"></i> {{ trans('forum.posts.create') }}
-                    </a>
-                </li>
+
+            @if(!empty(Auth::user()->getRoleNames()))
+                @foreach(Auth::user()->getRoleNames() as $v)
+
+                    @if($v === 'administer')
+                       <li class="nav-item">
+                         <a href="{{ route('posts.create') }}" class="nav-link">
+                           <i class="fa fa-plus-circle"></i> {{ trans('forum.posts.create') }}
+                         </a>
+                       </li>
+
+                       <li class="nav-item">
+                          <a href="{{ route('newshub.create') }}" class="nav-link">
+                           <i class="fa fa-plus-circle"></i> {{ trans('forum.newshub.create') }}
+                          </a>
+                       </li>
+                        
+                     @endif
+                    @endforeach
+            @endif
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">

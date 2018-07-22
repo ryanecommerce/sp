@@ -27,6 +27,7 @@
                 {!! $errors->first('password_confirmation', '<span class="form-error">:message</span>') !!}
             </div>
 
+
             <div class="form-group">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">
                     가입하기

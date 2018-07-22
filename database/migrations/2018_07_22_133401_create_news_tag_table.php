@@ -21,7 +21,7 @@ class CreateNewsTagTable extends Migration
             $table->foreign('news_id')->references('id')
                 ->on('news')->onDelete('cascade');
             $table->foreign('tag_id')->references('id')
-                ->on('tags')->onDelete('cascade');
+                ->on('tags_news')->onDelete('cascade');
         });
     }
 

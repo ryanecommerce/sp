@@ -36,6 +36,10 @@ return [
         'success_updating' => 'Updated',
     ],
 
+    'newshub' => [
+        'create' => 'New News',
+    ],
+
     'comments' => [
         'title' => 'Comments',
         'reply' => 'Leave a comment',

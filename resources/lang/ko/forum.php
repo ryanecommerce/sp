@@ -8,7 +8,7 @@ return [
 
     'posts' => [
         'index' => '글 목록',
-        'create' => '글쓰기',
+        'create' => '포스트 쓰기',
         'edit' => '글 수정',
         'destroy' => '글 삭제',
         'store' => '저장하기',
@@ -36,6 +36,10 @@ return [
         'success_updating' => '수정하신 내용을 저장했습니다.',
         'view' => '보기',
         'download' => '다운로드',
+    ],
+
+    'newshub' => [
+        'create' => '뉴스 쓰기',
     ],
 
     'comments' => [

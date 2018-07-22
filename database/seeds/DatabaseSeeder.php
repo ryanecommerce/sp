@@ -13,11 +13,21 @@ class DatabaseSeeder extends Seeder
     {
         //App\Tag::truncate();
         DB::table('tags')->delete();
+        DB::table('tags_news')->delete();
         DB::table('post_tag')->truncate();
+        DB::table('news_tag')->truncate();
         $tags = config('project.tags');
+        $tags_news = config('project.tags_news');
 
         foreach($tags as $slug => $name) {
             App\Tag::create([
+                'name' => $name,
+                'slug' => str_slug($slug)
+            ]);
+        }
+
+        foreach($tags_news as $slug => $name) {
+            App\Tag_news::create([
                 'name' => $name,
                 'slug' => str_slug($slug)
             ]);
@@ -29,6 +39,8 @@ class DatabaseSeeder extends Seeder
         $users = App\User::all();
         $posts = App\Post::all();
         $tags = App\Tag::all();
+        $tags_news = App\Tag_news::all();
+
 
         foreach($posts as $post) {
             $post->tags()->sync(
