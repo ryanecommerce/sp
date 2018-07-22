@@ -23,9 +23,6 @@ return [
         'Google' => '구글',
         'Naver' => '네이버',
         'Kakao' => '카카오',
-    ],
-
-    'tags_news' => [
         'eCommerce' => '이커머스',
         'Solution' => '솔루션',
         'Overseas' => '해외시장',
@@ -33,5 +30,4 @@ return [
         'Business' => '비즈니스',
         'Startup' => '스타트업',
     ],
-
 ];

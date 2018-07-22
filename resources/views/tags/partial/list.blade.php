@@ -1,5 +1,5 @@
 @if ($tags->count())
     @foreach ($tags as $tag)
-        <h2><a href="{{ route('news.show', $newshub->id ) }}">{{ $tag->name }}</a></h2>
+        <h2><a href="{{ route('posts.show', $post->id ) }}">{{ $tag->name }}</a></h2>
     @endforeach
 @endif
