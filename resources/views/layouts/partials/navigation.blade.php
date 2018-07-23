@@ -48,7 +48,7 @@
                        </li>
                         
                      @endif
-                    @endforeach
+                 @endforeach
             @endif
 
                 <li class="nav-item dropdown">

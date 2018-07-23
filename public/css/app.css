@@ -14316,3 +14316,13 @@ div.card-text > .h_right {
   background-color: #03abab !important;
 }
 
+.social_login a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: #04bfbf !important;
+  border: 0px;
+}
+

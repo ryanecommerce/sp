@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
 
         foreach($tags as $slug => $name) {
             App\Tag::create([
-                'name' => $name,
+                'name' => $name[0],
+                'category' => $name[1],
                 'slug' => str_slug($slug)
             ]);
         }

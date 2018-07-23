@@ -174,3 +174,13 @@ div.card-text  {
   color: $bgDefault !important;
   background-color: $mainDefault_dark1 !important;
 }
+
+.social_login a {
+  color: $bgDefault;
+  text-decoration : none;
+}
+
+.btn-primary {
+  background: $mainDefault !important;
+  border: 0px;
+}

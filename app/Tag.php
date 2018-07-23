@@ -11,7 +11,7 @@ class Tag extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['name', 'slug', 'category'];
 
     /**
      * The attributes that should be hidden for arrays.

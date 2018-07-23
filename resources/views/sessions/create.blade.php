@@ -47,14 +47,14 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                    <a href="{{ url('/auth/facebook') }}" class="btn btn-facebook"><i class="fa fa-facebook"></i>{{ trans('auth.sessions.login_with_facebook') }}</a>
+                <div class="btn btn-primary btn-lg btn-block social_login" type="submit">
+                    <a href="{{ url('/auth/facebook') }}">{{ trans('auth.sessions.login_with_facebook') }}</a>
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                    <a href="{{ url('/auth/naver') }}" class="btn"><i class="fa fa-facebook"></i>{{ trans('auth.sessions.login_with_naver') }}</a>
+                <div class="btn btn-primary btn-lg btn-block social_login" type="submit">
+                    <a href="{{ url('/auth/naver') }}">{{ trans('auth.sessions.login_with_naver') }}</a>
                 </div>
             </div>
 

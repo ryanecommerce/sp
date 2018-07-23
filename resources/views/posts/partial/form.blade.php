@@ -22,9 +22,11 @@
     <label for="tags">태그</label>
     <select name="tags[]" id="tags" multiple="multiple" class="form-control" >
         @foreach($allTags as $tag)
+            @if($tag->category === 'post')
             <option value="{{ $tag->id }}" {{ $post->tags->contains($tag->id) ? 'selected="selected"' : '' }}>
-                {{ $tag->name }}
+                {{ $tag->name}}
             </option>
+            @endif
         @endforeach
     </select>
     {!! $errors->first('tags', '<span class="form-error">:message</span>') !!}

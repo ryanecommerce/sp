@@ -5,8 +5,8 @@
 </div>
 
 <div class="form-group {{ $errors->has('link') ? 'has-error' : '' }}">
-    <label for="link">본문</label>
-    <textarea name="link" id="link" rows="10" class="form-control">{{ old('link', $news->link) }}</textarea>
+    <label for="link">링크</label>
+    <input type="text" name="link" id="link" value="{{ old('link', $news->link) }}" class="form-control"/>
     {!!  $errors->first('link', '<span class="form-error">:message</span>') !!}
 </div>
 
@@ -21,9 +21,11 @@
     <label for="tags">태그</label>
     <select name="tags[]" id="tags" multiple="multiple" class="form-control" >
         @foreach($allTags as $tag)
+            @if($tag->category === 'news')
             <option value="{{ $tag->id }}" {{ $news->tags->contains($tag->id) ? 'selected="selected"' : '' }}>
                 {{ $tag->name }}
             </option>
+            @endif
         @endforeach
     </select>
     {!! $errors->first('tags', '<span class="form-error">:message</span>') !!}
