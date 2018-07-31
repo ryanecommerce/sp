@@ -15,12 +15,20 @@ class DatabaseSeeder extends Seeder
         DB::table('tags')->delete();
         DB::table('post_tag')->truncate();
         $tags = config('project.tags');
+        $shoplists = config ('project.shoplist');
 
         foreach($tags as $slug => $name) {
             App\Tag::create([
                 'name' => $name[0],
                 'category' => $name[1],
                 'slug' => str_slug($slug)
+            ]);
+        }
+
+        foreach($shoplists as $name => $nation) {
+            App\Shoplist::create([
+                'name' => $name,
+                'nation' => $nation,
             ]);
         }
 

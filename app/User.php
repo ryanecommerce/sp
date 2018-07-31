@@ -42,8 +42,14 @@ class User extends Authenticatable
         return $this->hasMany(News::class);
     }
 
+    public function shoplists()
+    {
+        return $this->belongsTo(Shoplist::class);
+    }
+
     public function isAdmin()
     {
         return ($this->id === 1) ? true : false;
     }
+
 }
