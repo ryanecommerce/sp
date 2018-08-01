@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
         foreach($shoplists as $name => $nation) {
             App\Shoplist::create([
                 'name' => $name,
-                'nation' => $nation,
+                'category' => $nation[0],
+                'nation' => $nation[1],
             ]);
         }
 

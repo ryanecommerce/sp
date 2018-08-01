@@ -16,6 +16,7 @@ class CreateShoplistsTable extends Migration
         Schema::create('shoplists', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('category');
             $table->string('nation');
             $table->timestamps();
         });
