@@ -27,6 +27,19 @@
                 {!! $errors->first('password_confirmation', '<span class="form-error">:message</span>') !!}
             </div>
 
+            <div class="form-group" {{ $errors->has('shop_id') ? 'has-error' : '' }}">
+                <label>사용하고 있거나 사용을 고려하고 있는 쇼핑몰 솔루션을 선택해주세요? </label>
+                <select name="shop_id" class="form-control" placeholder="쇼핑몰" value="{{ old('shop_id') }}">
+                    <option value="" selected disabled hidden>쇼핑몰 선택</option>
+                    @foreach($shoplists as $shoplist)
+                        @if($shoplist->category === 'Shoppingmall')
+                        <option value="{{ $shoplist->id }}">{{ $shoplist->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
+                {!! $errors->first('shop_id', '<span class="form-error">:message</span>') !!}
+            </div>
+
 
             <div class="form-group">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">

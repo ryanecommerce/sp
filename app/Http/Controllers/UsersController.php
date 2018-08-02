@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Shoplist;
 use Spatie\Permission\Models\Role;
 use DB;
 
@@ -23,8 +24,9 @@ class UsersController extends Controller
 
     public function create()
     {
+        $shoplists = Shoplist::all();
         $roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles'));
+        return view('users.create')->with(compact('roles'))->with(compact('shoplists'));
     }
 
     public function store(Request $request)
@@ -33,6 +35,7 @@ class UsersController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'shop_id' => 'required',
         ]);
 
         $confirmCode = str_random(60);
@@ -44,6 +47,7 @@ class UsersController extends Controller
             'provider' => 'native',
             'provider_id' => '0',
             'confirm_code' => $confirmCode,
+            'shop_id' => $request->shop_id,
         ]);
 
         $user->assignRole('default');
