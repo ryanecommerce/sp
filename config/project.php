@@ -44,5 +44,6 @@ return [
         '마젠토' => ['Shoppingmall','US'],
         '쇼피파이' => ['Shoppingmall','CA'],
         '빅커머스' => ['Shoppingmall','US'],
+        '아직 없다' => ['etc', 'ZZ']
     ]
 ];
