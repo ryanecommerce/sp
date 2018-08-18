@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('provider');
             $table->string('provider_id');
             $table->string('shop_id');
+            $table->string('agree_terms');
+            $table->string('agree_privacy');
             $table->rememberToken();
             $table->timestamps();
         });

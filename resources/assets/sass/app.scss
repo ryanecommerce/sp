@@ -18,6 +18,7 @@ $mainDefault: #04bfbf;
 $mainDefault_dark1: #03abab;
 $mainDefault_light1: #81dfdf;
 $border-bottom: #dee2e6;
+$warning-color: #ea2e49;
 $navLinktext: #3a3a3a;
 $navLinktext2: #fff;
 
@@ -183,4 +184,58 @@ div.card-text  {
 .btn-primary {
   background: $mainDefault !important;
   border: 0px;
+}
+
+//User Create
+.screen_out {
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+.terms_box {
+  position: relative;
+  border: 1px solid #d5d5d5;
+}
+
+.down_box {
+  border-top: 0px !important;
+}
+
+.tit_agreement {
+  height: 50px;
+  padding-left: 18px;
+  border-bottom: 1px solid #e6e6e6;
+  line-height: 52px;
+  font-size: 14px;
+}
+
+.tit_survey {
+  font-size: 14px;
+}
+
+.form-check {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+}
+
+.form-check-label {
+  display: block !important;
+}
+
+.terms-container {
+  border: 0px;
+  padding: 10px 20px 10px 20px;
+  width: 100%;
+  font-size: 12px;
+}
+
+.form-error {
+  color: $warning-color;
+  font-size: 10px;
+  float: right;
 }

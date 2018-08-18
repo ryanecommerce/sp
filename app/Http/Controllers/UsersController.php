@@ -35,8 +35,20 @@ class UsersController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required|confirmed|min:6',
             'shop_id' => 'required',
+            'agree_terms' => 'required',
+            'agree_privacy' => 'required',
+        ],$messages = [
+            'name.required' => '* 이름 또는 닉네임을 정확히 입력해주세요.',
+            'email.required' => '* 이메일을 정확히 입력해주세요.',
+            'password.required' => '* 비밀번호를 정확히 입력해주세요.',
+            'password_confirmation.required' => '* 입력하신 비밀번호와 동일하게 입력해주세요.',
+            'shop_id.required' => '* 쇼핑몰을 선택해주세요.',
+            'agree_terms.required' => '* 서비스 약관 동의해 주세요.',
+            'agree_privacy.required' => '* 개인정보 수집 및 이용에 동의해 주세요.',
         ]);
+
 
         $confirmCode = str_random(60);
 
@@ -48,6 +60,8 @@ class UsersController extends Controller
             'provider_id' => '0',
             'confirm_code' => $confirmCode,
             'shop_id' => $request->shop_id,
+            'agree_terms' => '1',
+            'agree_privacy' => '1',
         ]);
 
         $user->assignRole('default');
