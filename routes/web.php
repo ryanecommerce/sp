@@ -68,13 +68,17 @@ Route::post('auth/reset', [
 Route::get('auth/{provider}', 'SocialController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialController@handleProviderCallback');
 Route::get('users/social', 'SocialController@handleProviderCallback');
+Route::post('users/social', [
+    'as' => 'social.update',
+    'uses' => 'SocialController@update'
+]);
 
 /* Posts */
 Route::resource('posts', 'PostsController');
 
 Route::get('tags/{slug}/posts', [
-   'as' => 'tags.posts.index',
-   'uses' => 'PostsController@index'
+    'as' => 'tags.posts.index',
+    'uses' => 'PostsController@index'
 ]);
 
 Route::get('tags_news/{slug}/posts', [
@@ -85,5 +89,5 @@ Route::get('tags_news/{slug}/posts', [
 /* News */
 Route::resource('newshub', 'NewsController');
 
-    Route::resource('roles','RoleController');
-    Route::resource('users','UsersController');
+Route::resource('roles','RoleController');
+Route::resource('users','UsersController');

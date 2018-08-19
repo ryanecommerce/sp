@@ -95,7 +95,12 @@ class SocialController extends Controller
 //        ]);
 //    }
 
+    public function update(Request $request, $authUser)
+    {
 
+        var_dump($request);
+        var_dump($authUser);
 
+    }
 
 }
