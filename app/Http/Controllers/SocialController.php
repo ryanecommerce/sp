@@ -35,6 +35,8 @@ class SocialController extends Controller
      */
     public function handleProviderCallback($provider)
     {
+        $shoplists = Shoplist::all();
+
         $user = Socialite::driver($provider)->user();
 
         $authUser = $this->findOrCreateUser($user, $provider);
@@ -70,7 +72,6 @@ class SocialController extends Controller
 
     public function findOrCreateUser($user, $provider)
     {
-        $shoplists = Shoplist::all();
 
         $authUser = User::where('provider_id', $user->id)->first();
         if ($authUser) {
