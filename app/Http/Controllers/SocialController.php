@@ -98,10 +98,21 @@ class SocialController extends Controller
     public function update(Request $request, $authUser)
     {
 
-        $authUser = User::where('provider_id', $user->id)->first();
+        $user = $request->all();
 
-        var_dump($authUser);
+        $authUser = User::where('provider_id', $user["provider_id"])->first();
 
+        $authUser->update([
+            'shop_id' => $request->shop_id,
+            'activated' => '1',
+            'agree_terms' => '1',
+            'agree_privacy' => '1',
+        ])
+
+        auth()->login($authUser);
+        flash(auth()->user()->name . '님. 환영합니다.');
+
+        return redirect('/');
     }
 
 }
