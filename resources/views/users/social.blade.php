@@ -7,7 +7,7 @@
             <form action="{{ route('users.store')  }}" method="POST" class="form__auth">
                 {!! csrf_field() !!}
 
-                <?php var_dump($user) ?>
+                <?php var_dump($authUser) ?>
 
                 <div class="form-group {{ $errors->has('shop_id') ? 'has-error' : '' }}">
                     <label><h5 class="tit_survey">사용하고 있거나 사용을 고려하고 있는 쇼핑몰 솔루션을 선택해주세요? </h5></label>

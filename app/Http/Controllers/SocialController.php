@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Shoplist;
 use Socialite;
 
 class SocialController extends Controller
@@ -36,12 +37,14 @@ class SocialController extends Controller
     {
         $user = Socialite::driver($provider)->user();
 
-        $authUser = $this->findOrCreateUser($user, $provider);
+        $this->findOrCreateUser($user, $provider);
 
-        auth()->login($authUser);
-        flash(auth()->user()->name . '님. 환영합니다.');
+//        $authUser = $this->findOrCreateUser($user, $provider);
 
-        return redirect('/');
+//        auth()->login($authUser);
+//        flash(auth()->user()->name . '님. 환영합니다.');
+
+//        return redirect('/');
     }
 
     /**
@@ -71,8 +74,18 @@ class SocialController extends Controller
         if ($authUser) {
             return $authUser;
         }
-        return view('users/social', compact('user'));
+        return view('users.social')->with(compact('user'))->with(compact('shoplists'));
     }
+
+//    public function userComfirmed($user)
+//    {
+//        $user = User::create([
+//            'name'     => $user->name,
+//            'email'    => $user->email,
+//            'provider' => $provider,
+//            'provider_id' => $user->id
+//        ]);
+//    }
 
 
 
