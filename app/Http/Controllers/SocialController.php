@@ -51,17 +51,30 @@ class SocialController extends Controller
      * @param $provider Social auth provider
      * @return  User
      */
+//    public function findOrCreateUser($user, $provider)
+//    {
+//        $authUser = User::where('provider_id', $user->id)->first();
+//        if ($authUser) {
+//            return $authUser;
+//        }
+//        return User::create([
+//            'name'     => $user->name,
+//            'email'    => $user->email,
+//            'provider' => $provider,
+//            'provider_id' => $user->id
+//        ]);
+//    }
+
     public function findOrCreateUser($user, $provider)
     {
         $authUser = User::where('provider_id', $user->id)->first();
         if ($authUser) {
             return $authUser;
         }
-        return User::create([
-            'name'     => $user->name,
-            'email'    => $user->email,
-            'provider' => $provider,
-            'provider_id' => $user->id
-        ]);
+        return view('users/social', compact('user'));
     }
+
+
+
+
 }

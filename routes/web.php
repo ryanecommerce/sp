@@ -67,6 +67,7 @@ Route::post('auth/reset', [
 /* Social Authentication */
 Route::get('auth/{provider}', 'SocialController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'SocialController@handleProviderCallback');
+Route::get('users/social', 'SocialController@handleProviderCallback');
 
 /* Posts */
 Route::resource('posts', 'PostsController');
