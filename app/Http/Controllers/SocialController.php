@@ -109,8 +109,8 @@ class SocialController extends Controller
         $authUser->update([
             'shop_id' => $request->shop_id,
             'activated' => '1',
-            'agree_terms' => $request->agree_terms,
-            'agree_privacy' => $request->agree_privacy,
+            'agree_terms' => '1',
+            'agree_privacy' => '1',
         ]);
 
         auth()->login($authUser);
