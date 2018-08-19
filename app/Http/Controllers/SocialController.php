@@ -37,7 +37,7 @@ class SocialController extends Controller
     {
         $user = Socialite::driver($provider)->user();
 
-        $this->findOrCreateUser($user, $provider);
+        $authUser = $this->findOrCreateUser($user, $provider);
 
 //        $authUser = $this->findOrCreateUser($user, $provider);
 
@@ -70,11 +70,13 @@ class SocialController extends Controller
 
     public function findOrCreateUser($user, $provider)
     {
+        $shoplists = Shoplist::all();
+
         $authUser = User::where('provider_id', $user->id)->first();
         if ($authUser) {
             return $authUser;
         }
-        return view('users.social')->with(compact('user'))->with(compact('shoplists'));
+        return view('users.social')->with(compact('authUser'))->with(compact('shoplists'));
     }
 
 //    public function userComfirmed($user)
