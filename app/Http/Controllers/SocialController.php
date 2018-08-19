@@ -114,7 +114,7 @@ class SocialController extends Controller
         $user = $request->all();
 
         $authUser = User::where('provider_id', $user["provider_id"])->first();
-        
+
 
         $authUser->update([
             'shop_id' => $request->shop_id,
