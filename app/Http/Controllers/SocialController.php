@@ -107,7 +107,7 @@ class SocialController extends Controller
             'activated' => '1',
             'agree_terms' => '1',
             'agree_privacy' => '1',
-        ])
+        ]);
 
         auth()->login($authUser);
         flash(auth()->user()->name . '님. 환영합니다.');
