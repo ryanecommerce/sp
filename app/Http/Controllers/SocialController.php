@@ -44,7 +44,7 @@ class SocialController extends Controller
 //        auth()->login($authUser);
 //        flash(auth()->user()->name . '님. 환영합니다.');
 
-//        return redirect('/');
+        return view('users.social')->with(compact('authUser'))->with(compact('shoplists'));
     }
 
     /**
@@ -76,7 +76,12 @@ class SocialController extends Controller
         if ($authUser) {
             return $authUser;
         }
-        return view('users.social')->with(compact('authUser'))->with(compact('shoplists'));
+        return User::create([
+            'name'     => $user->name,
+            'email'    => $user->email,
+            'provider' => $provider,
+            'provider_id' => $user->id
+        ]);
     }
 
 //    public function userComfirmed($user)
