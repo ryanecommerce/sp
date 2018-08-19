@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('password', 60)->nullable();
             $table->string('provider');
             $table->string('provider_id');
-            $table->string('shop_id');
-            $table->string('agree_terms');
-            $table->string('agree_privacy');
+            $table->string('shop_id')->nullable();
+            $table->string('agree_terms')->default(0);
+            $table->string('agree_privacy')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -74,9 +74,13 @@ class SocialController extends Controller
     {
 
         $authUser = User::where('provider_id', $user->id)->first();
+
         if ($authUser) {
-            return $authUser;
+            auth()->login($authUser);
+            flash(auth()->user()->name . '님. 환영합니다.');
+            return redirect('/');
         }
+
         return User::create([
             'name'     => $user->name,
             'email'    => $user->email,
@@ -95,7 +99,7 @@ class SocialController extends Controller
 //        ]);
 //    }
 
-    public function update(Request $request, $authUser)
+    public function update(Request $request)
     {
 
         $user = $request->all();
@@ -105,8 +109,8 @@ class SocialController extends Controller
         $authUser->update([
             'shop_id' => $request->shop_id,
             'activated' => '1',
-            'agree_terms' => '1',
-            'agree_privacy' => '1',
+            'agree_terms' => $request->agree_terms,
+            'agree_privacy' => $request->agree_privacy,
         ]);
 
         auth()->login($authUser);
