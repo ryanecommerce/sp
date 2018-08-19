@@ -101,6 +101,15 @@ class SocialController extends Controller
 
     public function update(Request $request)
     {
+        $this->validate($request, [
+            'shop_id' => 'required',
+            'agree_terms' => 'required',
+            'agree_privacy' => 'required',
+        ],$messages = [
+            'shop_id.required' => '* 쇼핑몰을 선택해주세요.',
+            'agree_terms.required' => '* 서비스 약관 동의해 주세요.',
+            'agree_privacy.required' => '* 개인정보 수집 및 이용에 동의해 주세요.',
+        ]);
 
         $user = $request->all();
 
