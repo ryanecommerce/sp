@@ -98,7 +98,8 @@ class SocialController extends Controller
     public function update(Request $request, $authUser)
     {
 
-        var_dump($request);
+        $authUser = User::where('provider_id', $user->id)->first();
+
         var_dump($authUser);
 
     }
