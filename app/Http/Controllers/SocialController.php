@@ -36,17 +36,18 @@ class SocialController extends Controller
     public function handleProviderCallback($provider)
     {
         $shoplists = Shoplist::all();
-
         $user = Socialite::driver($provider)->user();
-
         $authUser = $this->findOrCreateUser($user, $provider);
 
-//        $authUser = $this->findOrCreateUser($user, $provider);
+        if(!$authUser->activated){
+            return view('users.social')->with(compact('authUser'))->with(compact('shoplists'));
+        }
 
-//        auth()->login($authUser);
-//        flash(auth()->user()->name . '님. 환영합니다.');
+        auth()->login($authUser);
+        flash(auth()->user()->name . '�~K~X. �~Y~X�~X~A�~U��~K~H�~K�.');
 
-        return view('users.social')->with(compact('authUser'))->with(compact('shoplists'));
+        return redirect('/');
+
     }
 
     /**
@@ -76,9 +77,7 @@ class SocialController extends Controller
         $authUser = User::where('provider_id', $user->id)->first();
 
         if ($authUser) {
-            auth()->login($authUser);
-            flash(auth()->user()->name . '님. 환영합니다.');
-            return redirect('/');
+            return $authUser;
         }
 
         return User::create([
@@ -87,6 +86,7 @@ class SocialController extends Controller
             'provider' => $provider,
             'provider_id' => $user->id
         ]);
+
     }
 
 //    public function userComfirmed($user)
