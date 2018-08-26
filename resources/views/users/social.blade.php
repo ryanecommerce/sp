@@ -85,14 +85,14 @@
                     agree_terms: "* 서비스 약관 동의해 주세요.",
                     agree_privacy: "* 개인정보 수집 및 이용에 동의해 주세요.",
                 },
-                errorPlacement: function(error, element) {
-                    if (element.type == 'checkbox') {
+                errorPlacement: function (error, element) {
+                    if (element[0].type == 'checkbox') {
                         error.appendTo('.errorTxt');
                     }
                     else {
                         error.insertAfter(element);
                     }
-                }
+                },
             });
 
         });
