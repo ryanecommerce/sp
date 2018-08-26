@@ -51,6 +51,7 @@
                             </label>
                         </div>
                     </div>
+                    <label class="errorTxt"></label>
                     {!! $errors->first('agree_terms', '<span class="form-error">:message</span>') !!} <br/>
                     {!! $errors->first('agree_privacy', '<span class="form-error">:message</span>') !!}
                 </div>
@@ -69,11 +70,36 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script>
         $(document).ready(function () {
+            // $('#form').validate({ // initialize the plugin
+            //     rules: {
+            //         shop_id: {
+            //             required: true
+            //         },
+            //         agree_terms: {
+            //             required: true
+            //         },
+            //         agree_privacy: {
+            //             required: true
+            //         },
+            //     },
+            //     messages: {
+            //         shop_id: "* 쇼핑몰을 선택해주세요.",
+            //         agree_terms: "* 서비스 약관 동의해 주세요.",
+            //         agree_privacy: "* 개인정보 수집 및 이용에 동의해 주세요.",
+            //     }
+            // });
             $('#form').validate({ // initialize the plugin
                 rules: {
                     shop_id: {
                         required: true
                     },
+                },
+                messages: {
+                    shop_id: "* 쇼핑몰을 선택해주세요.",
+                }
+            });
+            $('#form').validate({ // initialize the plugin
+                rules: {
                     agree_terms: {
                         required: true
                     },
@@ -82,11 +108,13 @@
                     },
                 },
                 messages: {
-                    shop_id: "* 쇼핑몰을 선택해주세요.",
                     agree_terms: "* 서비스 약관 동의해 주세요.",
                     agree_privacy: "* 개인정보 수집 및 이용에 동의해 주세요.",
                 }
+                errorElement : 'label',
+                errorLabelContainer: '.errorTxt'
             });
+
         });
     </script>
 @stop
