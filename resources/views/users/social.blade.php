@@ -77,6 +77,9 @@
                     shop_id: {
                         required: true
                     },
+                },
+                messages: {
+                    shop_id: "* 쇼핑몰을 선택해주세요.",
                 }
             });
         });
