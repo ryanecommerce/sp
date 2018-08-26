@@ -4,7 +4,7 @@
     <div class="row justify-content-md-center">
         <div class="col-sm-4">
 
-            <form action="{{ route('social.update')  }}" method="POST" class="form__auth">
+            <form action="{{ route('social.update')  }}" method="POST" class="form__auth" id="form">
                 {!! csrf_field() !!}
 
                 <div class="form-group">
@@ -17,7 +17,7 @@
 
                 <input id="provider_id" name="provider_id" type="hidden" value="{{ $authUser["provider_id"] }}">
 
-                <div class="form-group" id="form">
+                <div class="form-group {{ $errors->has('shop_id') ? 'has-error' : '' }}">
                     <label><h5 class="tit_survey">사용하고 있거나 사용을 고려하고 있는 쇼핑몰 솔루션을 선택해주세요? </h5></label>
                     <select name="shop_id" class="form-control" placeholder="쇼핑몰" value="{{ old('shop_id') }}">
                         <option value="" selected disabled hidden>쇼핑몰 선택</option>
@@ -27,9 +27,10 @@
                             @endif
                         @endforeach
                     </select>
+                    {!! $errors->first('shop_id', '<span class="form-error">:message</span>') !!}
                 </div>
 
-                <div class="form-group" id="form_2">
+                <div class="form-group {{ $errors->has('agree_term','agree_privacy')  ? 'has-error' : '' }}{{ $errors->has('agree_privacy') ? 'has-error' : '' }}">
                     <legend class="screen_out">샵피디 서비스 약관 및 개인정보 수집, 이용에 대한 동의</legend>
                     <div class="terms_box">
                         <h5 class="tit_agreement">서비스 약관 동의</h5>
@@ -67,36 +68,11 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script>
         $(document).ready(function () {
-            // $('#form').validate({ // initialize the plugin
-            //     rules: {
-            //         shop_id: {
-            //             required: true
-            //         },
-            //         agree_terms: {
-            //             required: true
-            //         },
-            //         agree_privacy: {
-            //             required: true
-            //         },
-            //     },
-            //     messages: {
-            //         shop_id: "* 쇼핑몰을 선택해주세요.",
-            //         agree_terms: "* 서비스 약관 동의해 주세요.",
-            //         agree_privacy: "* 개인정보 수집 및 이용에 동의해 주세요.",
-            //     }
-            // });
             $('#form').validate({ // initialize the plugin
                 rules: {
                     shop_id: {
                         required: true
                     },
-                },
-                messages: {
-                    shop_id: "* 쇼핑몰을 선택해주세요.",
-                }
-            });
-            $('#form_2').validate({ // initialize the plugin
-                rules: {
                     agree_terms: {
                         required: true
                     },
@@ -105,11 +81,18 @@
                     },
                 },
                 messages: {
+                    shop_id: "* 쇼핑몰을 선택해주세요.",
                     agree_terms: "* 서비스 약관 동의해 주세요.",
                     agree_privacy: "* 개인정보 수집 및 이용에 동의해 주세요.",
                 },
-                errorElement : 'label',
-                errorLabelContainer: '.errorTxt'
+                errorPlacement: function(error, element) {
+                    if (element.type == 'checkbox') {
+                        error.appendTo('.errorTxt');
+                    }
+                    else {
+                        error.insertAfter(element);
+                    }
+                }
             });
 
         });
