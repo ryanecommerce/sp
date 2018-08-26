@@ -14373,7 +14373,9 @@ div.card-text > .h_right {
   font-size: 12px;
 }
 
-.form-error {
+#shop_id-error,
+#agree_terms-error,
+#agree_privacy-error {
   color: #ea2e49;
   font-size: 10px;
   float: right;

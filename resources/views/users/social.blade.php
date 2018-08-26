@@ -71,15 +71,20 @@
         $(document).ready(function () {
             $('#form').validate({ // initialize the plugin
                 rules: {
-                    name: {
+                    shop_id: {
                         required: true
                     },
-                    shop_id: {
+                    agree_terms: {
+                        required: true
+                    },
+                    agree_privacy: {
                         required: true
                     },
                 },
                 messages: {
                     shop_id: "* 쇼핑몰을 선택해주세요.",
+                    agree_terms: "* 서비스 약관 동의해 주세요.",
+                    agree_privacy: "* 개인정보 수집 및 이용에 동의해 주세요.",
                 }
             });
         });
