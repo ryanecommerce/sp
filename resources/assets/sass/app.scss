@@ -234,7 +234,7 @@ div.card-text  {
   font-size: 12px;
 }
 
-#shop_id-error, #agree_terms-error, #agree_privacy-error {
+#shop_id-error, .errorTxt {
   color: $warning-color;
   font-size: 10px;
   float: right;

@@ -4,7 +4,7 @@
     <div class="row justify-content-md-center">
         <div class="col-sm-4">
 
-            <form action="{{ route('social.update')  }}" method="POST" class="form__auth" id="form">
+            <form action="{{ route('social.update')  }}" method="POST" class="form__auth">
                 {!! csrf_field() !!}
 
                 <div class="form-group">
@@ -17,7 +17,7 @@
 
                 <input id="provider_id" name="provider_id" type="hidden" value="{{ $authUser["provider_id"] }}">
 
-                <div class="form-group {{ $errors->has('shop_id') ? 'has-error' : '' }}">
+                <div class="form-group" id="form">
                     <label><h5 class="tit_survey">사용하고 있거나 사용을 고려하고 있는 쇼핑몰 솔루션을 선택해주세요? </h5></label>
                     <select name="shop_id" class="form-control" placeholder="쇼핑몰" value="{{ old('shop_id') }}">
                         <option value="" selected disabled hidden>쇼핑몰 선택</option>
@@ -27,10 +27,9 @@
                             @endif
                         @endforeach
                     </select>
-                    {!! $errors->first('shop_id', '<span class="form-error">:message</span>') !!}
                 </div>
 
-                <div class="form-group {{ $errors->has('agree_term','agree_privacy')  ? 'has-error' : '' }}{{ $errors->has('agree_privacy') ? 'has-error' : '' }}">
+                <div class="form-group" id="form_2">
                     <legend class="screen_out">샵피디 서비스 약관 및 개인정보 수집, 이용에 대한 동의</legend>
                     <div class="terms_box">
                         <h5 class="tit_agreement">서비스 약관 동의</h5>
@@ -52,8 +51,6 @@
                         </div>
                     </div>
                     <label class="errorTxt"></label>
-                    {!! $errors->first('agree_terms', '<span class="form-error">:message</span>') !!} <br/>
-                    {!! $errors->first('agree_privacy', '<span class="form-error">:message</span>') !!}
                 </div>
 
                 <div class="form-group">
@@ -98,7 +95,7 @@
                     shop_id: "* 쇼핑몰을 선택해주세요.",
                 }
             });
-            $('#form').validate({ // initialize the plugin
+            $('#form_2').validate({ // initialize the plugin
                 rules: {
                     agree_terms: {
                         required: true
@@ -110,7 +107,7 @@
                 messages: {
                     agree_terms: "* 서비스 약관 동의해 주세요.",
                     agree_privacy: "* 개인정보 수집 및 이용에 동의해 주세요.",
-                }
+                },
                 errorElement : 'label',
                 errorLabelContainer: '.errorTxt'
             });
