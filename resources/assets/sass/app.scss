@@ -234,8 +234,15 @@ div.card-text  {
   font-size: 12px;
 }
 
+.errorTxt {
+  width: 100%;
+}
+
 #shop_id-error, #agree_terms-error, #agree_privacy-error {
   color: $warning-color;
   font-size: 10px;
-  float: right;
+  width: 100%;
+  text-align: right;
 }
+
+
