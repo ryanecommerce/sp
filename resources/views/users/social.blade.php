@@ -4,7 +4,7 @@
     <div class="row justify-content-md-center">
         <div class="col-sm-4">
 
-            <form action="{{ route('social.update')  }}" method="POST" class="form__auth">
+            <form action="{{ route('social.update')  }}" method="POST" class="form__auth" id="form">
                 {!! csrf_field() !!}
 
                 <div class="form-group">
@@ -64,4 +64,21 @@
 
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#form').validate({ // initialize the plugin
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    shop_id: {
+                        required: true
+                    },
+                }
+            });
+        });
+    </script>
 @stop
