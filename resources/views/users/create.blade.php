@@ -57,7 +57,7 @@
                         <textarea class="terms-container" rows="5" id="privacy"></textarea>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="checkbox" name="agree_privacy" class="form-control form-check-input">
+                                <input type="checkbox" name="agree_privacy" class="form-control form-check-input" {{ (! empty(old('agree_privacy')) ? 'checked' : '') }}>
                             </label>
                         </div>
                     </div>

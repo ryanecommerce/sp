@@ -35,7 +35,6 @@ class UsersController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'password_confirmation' => 'required|confirmed|min:6',
             'shop_id' => 'required',
             'agree_terms' => 'required',
             'agree_privacy' => 'required',
