@@ -8,7 +8,7 @@
             {!! csrf_field() !!}
 
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <input type="text" name="name" class="form-control" placeholder="이름" value="{{ old('name') }}" autofocus/>
+                <input type="text" name="name" class="form-control" placeholder="이름 또는 닉네임" value="{{ old('name') }}" autofocus/>
                 {!! $errors->first('name', '<span class="form-error">:message</span>') !!}
             </div>
 
@@ -44,7 +44,7 @@
                     <legend class="screen_out">샵피디 서비스 약관 및 개인정보 수집, 이용에 대한 동의</legend>
                     <div class="terms_box">
                         <h5 class="tit_agreement">서비스 약관 동의</h5>
-                        <textarea class="terms-container" rows="5">온라인상의 인터넷 서비스(이하 “서비스”라고 하며, 접속 가능한 유∙무선 단말기의 종류와는 상관없이 이용 가능한 “회사”가 제공하는 모든 “서비스”를 의미합니다. 이하 같습니다)에 회원으로 가입하고 이를 이용함에 있어 회사와 회원(본 약관에 동의하고 회원등록을 완료한 서비스 이용자를 말합니다. 이하 “회원”이라고 합니다)의 권리•의무 및 책임사항을 규정함을 목적으로 합니다.</textarea>
+                        <textarea class="terms-container" rows="5" id="terms_and_condition"></textarea>
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input type="checkbox" name="agree_terms" class="form-control form-check-input"  {{ (! empty(old('agree_terms')) ? 'checked' : '') }}>
@@ -54,7 +54,7 @@
 
                     <div class="terms_box down_box">
                         <h5 class="tit_agreement">개인정보 수집 및 이용 동의</h5>
-                        <textarea class="terms-container" rows="5">온라인상의 인터넷 서비스(이하 “서비스”라고 하며, 접속 가능한 유∙무선 단말기의 종류와는 상관없이 이용 가능한 “회사”가 제공하는 모든 “서비스”를 의미합니다. 이하 같습니다)에 회원으로 가입하고 이를 이용함에 있어 회사와 회원(본 약관에 동의하고 회원등록을 완료한 서비스 이용자를 말합니다. 이하 “회원”이라고 합니다)의 권리•의무 및 책임사항을 규정함을 목적으로 합니다.</textarea>
+                        <textarea class="terms-container" rows="5" id="privacy"></textarea>
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input type="checkbox" name="agree_privacy" class="form-control form-check-input">
@@ -70,8 +70,35 @@
                     가입하기
                 </button>
             </div>
+            <div class="form-group">
+                <a href="{{ url('/auth/facebook') }}" class="button btn btn-primary btn-lg btn-block social_login">{{ trans('auth.sessions.login_with_facebook') }}</a>
+            </div>
+
+            <div class="form-group">
+                <a href="{{ url('/auth/naver') }}" class="button btn btn-primary btn-lg btn-block social_login">{{ trans('auth.sessions.login_with_naver') }}</a>
+            </div>
         </form>
 
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+                $.ajax({
+                    url : "/files/terms_and_condition.txt",
+                    dataType: "text",
+                    success : function (data) {
+                        $("#terms_and_condition").text(data);
+                    }
+                 });
+
+                $.ajax({
+                url : "/files/privacy.txt",
+                dataType: "text",
+                success : function (data) {
+                    $("#privacy").text(data);
+                    }
+                });
+        });
+    </script>
 @stop
