@@ -21,6 +21,7 @@ $border-bottom: #dee2e6;
 $warning-color: #ea2e49;
 $navLinktext: #3a3a3a;
 $navLinktext2: #fff;
+$navOfftext: #ddd;
 
 .navbar-dark .navbar-brand {
   font-weight: 500 !important;
@@ -75,6 +76,13 @@ div.card-text  {
 
 .nav-link {
   color: $navLinktext!important;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px 10px 20px!important;
+}
+
+.off{
+  color: $navOfftext!important;
   font-size: 13px;
   font-weight: 600;
   padding: 10px 20px 10px 20px!important;

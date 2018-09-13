@@ -14201,6 +14201,13 @@ div.card-text > .h_right {
   padding: 10px 20px 10px 20px !important;
 }
 
+.off {
+  color: #ddd !important;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px 10px 20px !important;
+}
+
 .nav-pills > a {
   color: #fff !important;
 }

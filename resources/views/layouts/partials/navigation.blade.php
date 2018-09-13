@@ -17,6 +17,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="/posts">포스트</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link off" href="#">샵리스트</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link off" href="#">용어사전</a>
+            </li>
         </ul>
 
 
