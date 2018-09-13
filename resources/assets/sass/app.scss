@@ -253,3 +253,13 @@ div.card-text  {
   display: block;
   margin-top: 7px;
 }
+
+.card-body {
+   min-height: 114px;
+ }
+
+@media screen and (max-width: 800px) {
+  .card-body {
+    min-height: 0px;
+  }
+}

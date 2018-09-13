@@ -44,7 +44,7 @@ class SocialController extends Controller
         }
 
         auth()->login($authUser);
-        flash(auth()->user()->name . '�~K~X. �~Y~X�~X~A�~U��~K~H�~K�.');
+        flash(auth()->user()->name . '님, 환영합니다.');
 
         return redirect('/');
 
