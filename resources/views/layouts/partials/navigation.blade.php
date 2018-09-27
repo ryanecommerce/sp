@@ -18,10 +18,10 @@
                 <a class="nav-link" href="/posts">포스트</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link off" href="#">샵리스트</a>
+                <a class="nav-link" href="/shoplists">샵리스트</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link off" href="#">용어사전</a>
+                <a class="nav-link" href="/glossary">용어사전</a>
             </li>
         </ul>
 
@@ -37,32 +37,33 @@
                 </li>
             @else
 
-            @if(!empty(Auth::user()->getRoleNames()))
-                @foreach(Auth::user()->getRoleNames() as $v)
-
-                    @if($v === 'administer')
-                       <li class="nav-item">
-                         <a href="{{ route('posts.create') }}" class="nav-link">
-                           <i class="fa fa-plus-circle"></i> {{ trans('forum.posts.create') }}
-                         </a>
-                       </li>
-
-                       <li class="nav-item">
-                          <a href="{{ route('newshub.create') }}" class="nav-link">
-                           <i class="fa fa-plus-circle"></i> {{ trans('forum.newshub.create') }}
-                          </a>
-                       </li>
-                        
-                     @endif
-                 @endforeach
-            @endif
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
+
+                     @if(!empty(Auth::user()->getRoleNames()))
+                         @foreach(Auth::user()->getRoleNames() as $v)
+
+                             @if($v === 'administer')
+
+                                    <a class="dropdown-item" href="{{ route('posts.create') }}">
+                                        {{ trans('forum.posts.create') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('newshub.create') }}">
+                                        {{ trans('forum.newshub.create') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('glossary.create') }}">
+                                        {{ trans('forum.glossary.create') }}
+                                    </a>
+                             @endif
+                         @endforeach
+                     @endif
+
                         <a class="dropdown-item" href="{{ route('sessions.destroy') }}">
-                            Logout
-                        </a>
+                                Logout
+                            </a>
 
                         <form id="logout-form" action="" method="POST" style="display: none;">
                             {{ csrf_field() }}

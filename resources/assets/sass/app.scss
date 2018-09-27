@@ -62,7 +62,17 @@ div.card-text  {
         color: $navLinktext;
         text-decoration: none;
       }
-    }}
+    }
+    > p:nth-child(2) {
+      color : $mainDefault;
+      margin: 5px 0 5px;
+      font-size: 12px;
+    }
+    > p:nth-child(3) {
+      margin: 5px 0 5px;
+      font-size: 10px;
+    }
+  }
   > .h_right {
     float: left;
     width: 20%;
@@ -263,8 +273,22 @@ div.card-text  {
 }
 
 .card-body {
-   min-height: 114px;
+   min-height: 136px;
  }
+
+//Glossary
+
+.glossary_box {
+  margin-bottom: 1.5rem;
+  >.card {
+    >.card-body {
+      min-height: 0px;
+      > p {
+      }
+      > small {
+        padding-left: 10px;
+      }
+    }}}
 
 @media screen and (max-width: 800px) {
   .card-body {

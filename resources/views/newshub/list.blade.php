@@ -26,7 +26,12 @@
     </div>
 
 
-    <div class="lds-ring" style="margin:auto; display:none;"><div></div><div></div><div></div><div></div></div>
+    <div class="lds-ring" style="margin:auto; display:none;">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 
     <div class="ajax-load col-lg-12 col-centered text-center" style="display:block;">
     </div>
@@ -63,12 +68,13 @@
                 {
                     if(data.html == "") {
 
-                        $('.lds-ring').hide();
+                        $('.lds-ring').remove();
                         $('.ajax-load').html("마지막 포스트입니다.").fadeIn('5000');
+
                         return;
                     }
 
-                    $('#post-data').append(data.html);
+                    $('#post-data').append(data.html).show('slow');;
                 })
 
                 .fail(function(jqXHR, ajaxOptions, thrownError)

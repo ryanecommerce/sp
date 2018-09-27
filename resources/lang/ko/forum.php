@@ -42,6 +42,10 @@ return [
         'create' => '뉴스 쓰기',
     ],
 
+    'glossary' => [
+        'create' => '용어 쓰기',
+    ],
+
     'comments' => [
         'title' => '댓글',
         'reply' => '답글 쓰기',

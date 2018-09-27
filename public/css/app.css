@@ -14180,6 +14180,17 @@ div.card-text > .h_left > p > a {
   text-decoration: none;
 }
 
+div.card-text > .h_left > p:nth-child(2) {
+  color: #04bfbf;
+  margin: 5px 0 5px;
+  font-size: 12px;
+}
+
+div.card-text > .h_left > p:nth-child(3) {
+  margin: 5px 0 5px;
+  font-size: 10px;
+}
+
 div.card-text > .h_right {
   float: left;
   width: 20%;
@@ -14403,7 +14414,19 @@ div.card-text > .h_right {
 }
 
 .card-body {
-  min-height: 114px;
+  min-height: 136px;
+}
+
+.glossary_box {
+  margin-bottom: 1.5rem;
+}
+
+.glossary_box > .card > .card-body {
+  min-height: 0px;
+}
+
+.glossary_box > .card > .card-body > small {
+  padding-left: 10px;
 }
 
 @media screen and (max-width: 800px) {

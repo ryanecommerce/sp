@@ -13,9 +13,16 @@
                         <div class="card-text">
                             <div class="h_left">
                                 <p><a href="{{ url($news->link) }}" target="_blank">{{ str_limit($news->title, 100) }}</a></p>
-                                <small class="text-muted">{{ $news->created_at->diffForHumans() }}</small>
+                                <p>
+                                    @foreach ($news->tags as $tag)
+                                        #{{ $tag->name }}
+                                    @endforeach
+                                </p>
+                                <p>{{ $news->created_at->diffForHumans() }}</p>
                             </div>
+
                             <div class="h_right"><img src="images/{{ $attachment->filename }}" width="50px"/></div>
+
                         </div>
 
                     @endforeach

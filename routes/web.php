@@ -88,6 +88,7 @@ Route::get('tags_news/{slug}/posts', [
 
 /* News */
 Route::resource('newshub', 'NewsController');
+Route::resource('glossary', 'GlossarysController');
 
 Route::resource('roles','RoleController');
 Route::resource('users','UsersController');

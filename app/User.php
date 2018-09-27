@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasMany(News::class);
     }
 
+    public function glossary()
+    {
+        return $this->hasMany(Glossary::class);
+    }
+
     public function shoplists()
     {
         return $this->belongsTo(Shoplist::class);
