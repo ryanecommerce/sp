@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Shoplistsinfo extends Model
+class Shopcategory extends Model
 {
     protected $fillable = [
-        'shop_id', 'category', 'sub_category', 'content',
+        'level', 'name', 'slug',
     ];
-
+    
     public function user()
     {
         return $this->belongsToMany(User::class);
